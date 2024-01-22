@@ -1,0 +1,29 @@
+##
+## Copyright (c) 2024 Marcos Bento
+##
+## Distributed under multiple licenses: Apache, MIT, Boost, Unlicense.
+##
+## See https://github.com/marcosbento/receptacles
+##
+
+#
+# This image is available at https://hub.docker.com/repository/docker/marcosbento/debian12.dev.untitled
+#
+
+FROM debian:12.2
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update \
+      && apt-get install -y --no-install-recommends \
+            software-properties-common \
+            vim wget curl \
+            build-essential ninja-build git git-lfs \
+            gcc g++ \
+            clang \
+            clang-format clang-tidy clang-tools \
+            cmake \
+            patchelf \
+            doxygen \
+            libboost-all-dev \
+      && rm -rf /var/lib/apt/lists/*
