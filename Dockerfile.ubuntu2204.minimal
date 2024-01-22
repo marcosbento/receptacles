@@ -1,0 +1,26 @@
+##
+## Copyright (c) 2024 Marcos Bento
+##
+## Distributed under multiple licenses: Apache, MIT, Boost, Unlicense.
+##
+## See https://github.com/marcosbento/receptacles
+##
+
+FROM arm64v8/ubuntu:22.04
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# Generic
+
+RUN apt-get update \
+      && apt-get install -y --no-install-recommends \
+            software-properties-common \
+            vim wget \
+            build-essential \
+            gcc g++ clang clang-format clang-tidy clang-tools python3-dev \
+            cmake \
+            ninja-build \
+            git git-lfs\
+            doxygen \
+            gpg-agent \
+      && rm -rf /var/lib/apt/lists/*
