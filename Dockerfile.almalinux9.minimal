@@ -1,0 +1,27 @@
+##
+## Copyright (c) 2024 Marcos Bento
+##
+## Distributed under multiple licenses: Apache, MIT, Boost, Unlicense.
+##
+## See https://github.com/marcosbento/receptacles
+##
+
+#
+# This image is available at https://hub.docker.com/repository/docker/marcosbento/debian12.dev.untitled
+#
+
+FROM almalinux:9.2
+
+RUN dnf update -y \
+      && dnf install -y 'dnf-command(config-manager)' \
+      && dnf config-manager --set-enabled crb \
+      && dnf install -y \
+            vim wget \
+            ninja-build git git-lfs \
+            gcc-toolset-12 \
+            clang \
+            clang-tools-extra \
+            doxygen \
+            boost-devel \
+            cmake \
+      && rm -rf /var/lib/apt/lists/*
